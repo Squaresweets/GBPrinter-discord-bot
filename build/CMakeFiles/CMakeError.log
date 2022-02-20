@@ -1,24 +1,156 @@
 Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
 Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-gcc.exe 
-Build flags: ;-mcpu=cortex-m0plus;-mthumb
+Build flags: 
 Id flags:  
 
 The output was:
 1
-d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-exit.o): in function `exit':
-exit.c:(.text.exit+0x18): undefined reference to `_exit'
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
 collect2.exe: error: ld returned 1 exit status
 
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
 Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-g++.exe 
-Build flags: ;-mcpu=cortex-m0plus;-mthumb
+Build flags: 
 Id flags:  
 
 The output was:
 1
-d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-exit.o): in function `exit':
-exit.c:(.text.exit+0x18): undefined reference to `_exit'
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
 collect2.exe: error: ld returned 1 exit status
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_6e18f\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_6e18f\fast && 
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_6d3dc\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_6d3dc\fast && 
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_cee89\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_cee89\fast && 
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_31d2a\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_31d2a\fast && 
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_84c02\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_84c02\fast && 
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_cd043\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_cd043\fast && 
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/Program Files/GBU Arm Embedded Toolchain/bin/arm-none-eabi-g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: d:/program files/gbu arm embedded toolchain/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_c23ff\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_c23ff\fast && 
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_4ce89\fast && The system cannot find the file specified
+Generator: execution of make failed. Make command was: nmake -f Makefile /nologo cmTC_4ce89\fast && 
 
 

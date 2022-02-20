@@ -1,0 +1,3 @@
+C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/c/build/pioasm/CMakeFiles/pioasm.dir
+C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/c/build/pioasm/CMakeFiles/edit_cache.dir
+C:/Users/Daniel/Desktop/pico/pico-projects/GBPrinter-discord-bot/c/build/pioasm/CMakeFiles/rebuild_cache.dir
