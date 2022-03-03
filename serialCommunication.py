@@ -83,7 +83,6 @@ assert epOut is not None
 
 
 # Control transfer to enable webserial on device
-print("control transfer out...")
 dev.ctrl_transfer(bmRequestType = 1, bRequest = 0x22, wIndex = 2, wValue = 0x01)
 
 send(INQU)
