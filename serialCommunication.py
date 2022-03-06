@@ -5,6 +5,9 @@ import sys
 import time
 import os
 
+from PIL import Image, ImageOps
+import numpy as np
+
 INQU = bytearray(b'\x88\x33\x0F\x00\x00\x00\x0F\x00\x00')
 INIT = bytearray(b'\x88\x33\x01\x00\x00\x00\x01\x00\x00\x00')
 PRNT = bytearray(b'\x88\x33\x02\x00\x04\x00\x01\x00\xE4\x40\x2B\x01\x00\x00')
@@ -24,13 +27,19 @@ def signal_handler(sig, frame):
     exit_gracefully()
 
 
+# def send(data):
+#     print("SENDING: ", end="")
+#     for b in data:
+#         print("0x%02x " % b, end="")
+#         epOut.write(b.to_bytes(1, byteorder='big'))
+#     print("")
+
 def send(data):
     print("SENDING: ", end="")
     for b in data:
         print("0x%02x " % b, end="")
-        epOut.write(b.to_bytes(1, byteorder='big'))
+    epOut.write(data)
     print("")
-
 
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -86,9 +95,65 @@ assert epOut is not None
 dev.ctrl_transfer(bmRequestType = 1, bRequest = 0x22, wIndex = 2, wValue = 0x01)
 
 send(INQU)
-recv = int.from_bytes(epIn.read(epIn.wMaxPacketSize, 100), byteorder='little')
+recv = int.from_bytes(epIn.read(epIn.wMaxPacketSize, 10000), byteorder='little')
+print("0x%02x " % recv)
 if recv == 0x81:
     print("Printer is there :D")
+else:
+    print("Printer is not there :(")
+    exit()
 
+# Load image from before
+image = Image.open("dithered.png")
+img = np.array(ImageOps.fit(image, (160, 144)))
 
+send(INIT)
+
+c = 0
+# create the byte array to store the entire image
+data = bytearray()
+for y in range(144):
+    for x in range(0, 160, 4):
+        byte = 0
+        byte = byte + (int(img[y][x] / 64) << 6)
+        byte = byte + (int(img[y][x+1] / 64) << 4)
+        byte = byte + (int(img[y][x+2] / 64) << 2)
+        byte = byte + int(img[y][x+3] / 64)
+        data.append(byte)
+# Send the data over for each of the 9 sections of the image
+for i in range(9):
+    DATA_SD = bytearray(649)
+    checksum = 0x04 + 0x08 + 0x02
+    dataSection = data[i*640:(i+1)*640]
+
+    for j in range(len(dataSection)):
+        checksum = checksum + dataSection[j]
+
+    DATA_SD[:] = DATA_header
+    DATA_SD[6:6+len(dataSection)] = dataSection
+    DATA_SD.append(checksum & 0x00FF)
+    DATA_SD.append(min(checksum >> 8, 255))
+    DATA_SD.append(0)
+    DATA_SD.append(0)
+    send(DATA_SD)
+
+send(INQU)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+send(PRNT)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+send(INQU)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+recv = int.from_bytes(epIn.read(1000, 100), byteorder='little')
+print("0x%02x " % recv)
+
+while True:
+    send(INQU)
+    time.sleep(1.2)
 exit_gracefully()

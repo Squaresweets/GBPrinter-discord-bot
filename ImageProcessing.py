@@ -20,16 +20,10 @@ def process_image(src):
     image = Image.open(src)
     width, height = image.size
     dimensions = (160,144)
-    #Rotate image if taller than longer for maximum PIXELS
-    if width < height:
-        dimensions = (144,160)
     img = np.array(ImageOps.fit(image, dimensions).convert("L"))
     x_max = np.size(img, axis=1)
     y_max = np.size(img, axis=0)
 
-    f = open('./output.bin', 'w')
-    f.truncate(0)
-    i = 0
     #Loop through every pixel
     for x in range(x_max):
         for y in range(y_max):
@@ -38,9 +32,7 @@ def process_image(src):
             c = clampNumber(c + ((bayer - 32) * 0.6), 0, 255)
             c = clampNumber(round(c / 64), 0, 3)
 
-            f.write(str(c))
-
             img[y][x] = c * 64
-    f.close()
+
     image = Image.fromarray(img).convert('L').resize((x_max * 10,y_max * 10),resample=Image.NEAREST)
     image.save('dithered.png', bit=2)
