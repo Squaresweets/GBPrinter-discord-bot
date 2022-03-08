@@ -27,19 +27,19 @@ def signal_handler(sig, frame):
     exit_gracefully()
 
 
-def send(data):
-    print("SENDING: ", end="")
-    for b in data:
-        print("0x%02x " % b, end="")
-        epOut.write(b.to_bytes(1, byteorder='big'))
-    print("")
-
 # def send(data):
 #     print("SENDING: ", end="")
 #     for b in data:
 #         print("0x%02x " % b, end="")
-#     epOut.write(data)
+#         epOut.write(b.to_bytes(1, byteorder='big'))
 #     print("")
+
+def send(data):
+    print("SENDING: ", end="")
+    for b in data:
+        print("0x%02x " % b, end="")
+    epOut.write(data)
+    print("")
 
 
 def read():
@@ -117,25 +117,36 @@ for y in range(144):
         data.append(byte)
 
 
+def clearbuffer():
+    while True:
+        try:
+            read()
+        except:
+            break
 
+clearbuffer()
 
-send(INQU)
-recv = read()
-if recv == 0x8100:
-    print("Printer is there :D")
-else:
-    print("Printer is not there :(")
-    #exit_gracefully()
-
-
+print(" ")
 send(INIT)
-read()
+clearbuffer()
+
+
+#exit()
+
+# if recv == 0x81:
+#     print("Printer is there :D")
+# else:
+#     print("Printer is not there :(")
+#     exit_gracefully()
+
+
+#send(INIT)
 
 c = 0
 # Send the data over for each of the 9 sections of the image
 for i in range(9):
     DATA_SD = bytearray(649)
-    checksum = 0x04 + 0x08 + 0x02
+    checksum = 0x04 + 0x80 + 0x02
     dataSection = data[i*640:(i+1)*640]
 
     for j in range(len(dataSection)):
@@ -143,19 +154,24 @@ for i in range(9):
 
     DATA_SD[:] = DATA_header
     DATA_SD[6:6+len(dataSection)] = dataSection
+
+    if checksum > 65535:
+        checksum = checksum - 65535
+
     DATA_SD.append(checksum & 0x00FF)
-    DATA_SD.append(min(checksum >> 8, 255))
+    DATA_SD.append(checksum >> 8)
     DATA_SD.append(0)
     DATA_SD.append(0)
     send(DATA_SD)
-    read()
+    clearbuffer()
 
-send(INQU)
-read()
+
+send(EMPT)
+clearbuffer()
 send(PRNT)
-read()
+clearbuffer()
 send(INQU)
-read()
+clearbuffer()
 
 while True:
     send(INQU)
