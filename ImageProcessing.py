@@ -34,5 +34,5 @@ def process_image(src):
 
             img[y][x] = c * 64
 
-    image = Image.fromarray(img).convert('L').resize((x_max * 10,y_max * 10),resample=Image.NEAREST)
+    image = Image.fromarray(img).convert('L')
     image.save('dithered.png', bit=2)

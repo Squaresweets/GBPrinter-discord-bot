@@ -104,18 +104,19 @@ dev.ctrl_transfer(bmRequestType = 1, bRequest = 0x22, wIndex = 2, wValue = 0x01)
 
 # Load image from before
 image = Image.open("dithered.png")
-img = np.array(ImageOps.fit(image, (160, 144)))
+img = np.array(image)
 # create the byte array to store the entire image
-data = bytearray()
+data = bytearray(5760)
 for y in range(144):
     for x in range(0, 160, 4):
         byte = 0
-        byte = byte + (int(img[y][x] / 64) << 6)
-        byte = byte + (int(img[y][x+1] / 64) << 4)
-        byte = byte + (int(img[y][x+2] / 64) << 2)
-        byte = byte + int(img[y][x+3] / 64)
-        data.append(byte)
-
+        byte = byte + (3-int(img[y][x] / 64) << 6)
+        byte = byte + (3-int(img[y][x+1] / 64) << 4)
+        byte = byte + (3-int(img[y][x+2] / 64) << 2)
+        byte = byte + (3-int(img[y][x+3] / 64) << 0)
+        #don't even ask me
+        c = ((x//8)*16)+((x%8)//4)+((y//8)*320)+(y%8)*2
+        data[c] = byte
 
 def clearbuffer():
     while True:
@@ -155,8 +156,7 @@ for i in range(9):
     DATA_SD[:] = DATA_header
     DATA_SD[6:6+len(dataSection)] = dataSection
 
-    if checksum > 65535:
-        checksum = checksum - 65535
+    checksum = checksum & 0xFFFF
 
     DATA_SD.append(checksum & 0x00FF)
     DATA_SD.append(checksum >> 8)
@@ -175,5 +175,6 @@ clearbuffer()
 
 while True:
     send(INQU)
+    clearbuffer()
     time.sleep(1.2)
 exit_gracefully()
