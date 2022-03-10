@@ -1,10 +1,12 @@
 import discord
 from PIL import Image
 import ImageProcessing
+import os
+from dotenv import load_dotenv
 image_types = ["png", "jpeg", "jpg"]
 
-#https://discord.com/api/oauth2/authorize?client_id=926847617474908200&permissions=268471296&scope=bot
-TOKEN = "OTI2ODQ3NjE3NDc0OTA4MjAw.YdBoHA.LMEIrEE18txBnx57LEPN59U9CLI"
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
